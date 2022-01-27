@@ -1,4 +1,3 @@
-<% String nomeEmpresa = (String) request.getAttribute("empresa");  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>A empresa <%= nomeEmpresa %> foi cadastrada com sucesso!</h1>
+<!-- EXPRESSION LANGUAGE NÃO FAZ LAÇO -->>
+	<h1>A empresa ${empresa} foi cadastrada com sucesso!</h1>
 </body>
 </html>
