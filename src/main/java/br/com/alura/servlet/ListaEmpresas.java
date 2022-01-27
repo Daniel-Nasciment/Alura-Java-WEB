@@ -17,22 +17,21 @@ import br.com.alura.modelo.Empresa;
 public class ListaEmpresas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		Banco nubank = new Banco();
-		
+
 		List<Empresa> listaEmpresas = nubank.listaEmpresas();
-		
+
 		PrintWriter writer = response.getWriter();
-		
-		
+
 		writer.println("<html>");
 		writer.println("<body>");
 		writer.println("<ul>");
-		
-			listaEmpresas.forEach(e -> writer.println("<li>"+ e.getNome() +"</li>"));
-		
+
+		listaEmpresas.forEach(e -> writer.println("<li>" + e.getNome() + "</li>"));
+
 		writer.println("</ul>");
 		writer.println("</body>");
 		writer.println("</html>");
