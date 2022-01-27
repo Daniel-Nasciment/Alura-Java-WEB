@@ -1,8 +1,9 @@
 package br.com.alura.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +16,8 @@ import br.com.alura.modelo.Empresa;
 public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		PrintWriter writer = response.getWriter();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 
 		String parameter = request.getParameter("nome");
 
@@ -27,13 +27,17 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco nuBank = new Banco();
 
 		nuBank.adiciona(empresa);
-		
-		writer.println("<html>");
-		writer.println("<body>");
-		writer.println("<h1>Empresa " + parameter + " cadastrada!!</h1>");
-		writer.println("</body>");
-		writer.println("</html>");
 
+		// DIRECIONANDO AO ARQUIVO JSP
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/NovaEmpresaCriada.jsp");
+
+		// ANTES DE ENCAMINHAR, AMARRO A REQUEST UM ATRIBUTO COM O NOME E O VALOR, DESSA
+		// FORMA
+		// POSSO ACESSA-LO NO ARQUIVO.JSP
+		request.setAttribute("empresa", empresa.getNome());
+
+		// ENCAMINHADO
+		requestDispatcher.forward(request, response);
 	}
 
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,18 +24,13 @@ public class ListaEmpresas extends HttpServlet {
 		Banco nubank = new Banco();
 
 		List<Empresa> listaEmpresas = nubank.listaEmpresas();
-
-		PrintWriter writer = response.getWriter();
-
-		writer.println("<html>");
-		writer.println("<body>");
-		writer.println("<ul>");
-
-		listaEmpresas.forEach(e -> writer.println("<li>" + e.getNome() + "</li>"));
-
-		writer.println("</ul>");
-		writer.println("</body>");
-		writer.println("</html>");
+			
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaEmpresas.jsp");
+		
+		request.setAttribute("lista", listaEmpresas);
+		
+		requestDispatcher.forward(request, response);
+		
 	}
 
 }
