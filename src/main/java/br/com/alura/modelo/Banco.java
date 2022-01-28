@@ -5,9 +5,22 @@ import java.util.List;
 
 public class Banco {
 
-	
-	// QUANDO A MÁQUINA VIRTUAL CARREGA A CLASSE, OS ATRIBUTOS E/OU BLOCOS STATICOS SÃO CARREGADOS
+	// QUANDO A MÁQUINA VIRTUAL CARREGA A CLASSE, OS ATRIBUTOS E/OU BLOCOS STATICOS
+	// SÃO CARREGADOS
 	private static List<Empresa> lista = new ArrayList<>();
+
+	static {
+
+		Empresa emp1 = new Empresa();
+		Empresa emp2 = new Empresa();
+
+		emp1.setNome("ZUP");
+		emp2.setNome("Nubank");
+
+		lista.add(emp1);
+		lista.add(emp2);
+
+	}
 
 	public void adiciona(Empresa empresa) {
 		System.out.println("Cadastrando nova empresa...");
