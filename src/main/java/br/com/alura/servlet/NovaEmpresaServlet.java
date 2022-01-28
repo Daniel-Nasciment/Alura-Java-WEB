@@ -1,6 +1,9 @@
 package br.com.alura.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +22,26 @@ public class NovaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-		String parameter = request.getParameter("nome");
+		String nome = request.getParameter("nome");
+		String data = request.getParameter("data");
+
+		Date dataFormatada = null;
+
+		try {
+
+			// FORMATADOR DE DATA DO TIPO 'DATE'
+			SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+			dataFormatada = formatador.parse(data);
+
+		} catch (ParseException e) {
+
+			throw new ServletException(e);
+
+		}
 
 		Empresa empresa = new Empresa();
-		empresa.setNome(parameter);
+		empresa.setNome(nome);
+		empresa.setData(dataFormatada);
 
 		Banco nuBank = new Banco();
 
@@ -34,7 +53,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		// ANTES DE ENCAMINHAR, AMARRO A REQUEST UM ATRIBUTO COM O NOME E O VALOR, DESSA
 		// FORMA
 		// POSSO ACESSA-LO NO ARQUIVO.JSP
-		request.setAttribute("empresa", empresa.getNome());
+		request.setAttribute("empresa", empresa);
 
 		// ENCAMINHADO
 		requestDispatcher.forward(request, response);
