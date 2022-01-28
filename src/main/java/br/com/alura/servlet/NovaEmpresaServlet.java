@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,16 +46,8 @@ public class NovaEmpresaServlet extends HttpServlet {
 
 		nuBank.adiciona(empresa);
 
-		// DIRECIONANDO AO ARQUIVO JSP
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/NovaEmpresaCriada.jsp");
-
-		// ANTES DE ENCAMINHAR, AMARRO A REQUEST UM ATRIBUTO COM O NOME E O VALOR, DESSA
-		// FORMA
-		// POSSO ACESSA-LO NO ARQUIVO.JSP
-		request.setAttribute("empresa", empresa);
-
-		// ENCAMINHADO
-		requestDispatcher.forward(request, response);
+		// REDIRECIONANDO PARA OUTRO SERVLET
+		response.sendRedirect("listaEmpresas");
 	}
 
 }
