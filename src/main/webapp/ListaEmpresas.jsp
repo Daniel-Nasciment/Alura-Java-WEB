@@ -3,6 +3,7 @@
 <% List<Empresa> lista = (List<Empresa>)request.getAttribute("lista"); %>
 <!-- ESSE IMPORT É PARA USAR O FOREACH E OUTRAS TAGS DESSA BIBLIOTECA -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 		
 		<c:forEach items="${ lista }" var="empresa">
 		
-			<li>${ empresa.nome }</li>
+			<li>${ empresa.nome } <fmt:formatDate value="${ empresa.data }" pattern="dd/MM/yyyy"/> </li>
 		
 		</c:forEach>
 	
