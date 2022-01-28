@@ -1,7 +1,6 @@
 package br.com.alura.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -25,7 +24,7 @@ public class ListaEmpresas extends HttpServlet {
 
 		List<Empresa> listaEmpresas = nubank.listaEmpresas();
 			
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaEmpresas.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaEmpresas.jsp");
 		
 		request.setAttribute("lista", listaEmpresas);
 		

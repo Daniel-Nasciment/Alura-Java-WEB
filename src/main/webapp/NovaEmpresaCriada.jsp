@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- EXPRESSION LANGUAGE NÃO FAZ LAÇO -->>
+<!-- EXPRESSION LANGUAGE NÃO FAZ LAÇO -->
 	<h1>A empresa ${empresa} foi cadastrada com sucesso!</h1>
 </body>
 </html>
