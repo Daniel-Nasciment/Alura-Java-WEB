@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  */
 
-@WebFilter("/listaEmpresas")
+//@WebFilter("/listaEmpresas")
 public class AutorizacaoFilter implements Filter {
 
 

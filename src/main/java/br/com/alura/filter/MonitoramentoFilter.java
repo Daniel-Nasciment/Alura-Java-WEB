@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter(urlPatterns = "/listaEmpresas")
+//@WebFilter(urlPatterns = "/listaEmpresas")
 public class MonitoramentoFilter implements Filter{
 
 	// UM FILTER FICA ANTES DA CAMADA "CONTROLLER"
