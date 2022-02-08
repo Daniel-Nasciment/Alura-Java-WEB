@@ -9,4 +9,26 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+   <filter>
+  	<filter-name>MF</filter-name>
+  	<filter-class>br.com.alura.filter.MonitoramentoFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>MF</filter-name>
+  	<url-pattern>/listaEmpresas</url-pattern>
+  </filter-mapping>
+  
+  
+   <filter>
+  	<filter-name>AF</filter-name>
+  	<filter-class>br.com.alura.filter.AutorizacaoFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>AF</filter-name>
+  	<url-pattern>/listaEmpresas</url-pattern>
+  </filter-mapping>
+  
 </web-app>

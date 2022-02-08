@@ -23,13 +23,13 @@ public class ListaEmpresas extends HttpServlet {
 		Banco nubank = new Banco();
 
 		List<Empresa> listaEmpresas = nubank.listaEmpresas();
-			
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaEmpresas.jsp");
-		
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/view/listaEmpresas.jsp");
+
 		request.setAttribute("lista", listaEmpresas);
-		
+
 		requestDispatcher.forward(request, response);
-		
+
 	}
 
 }

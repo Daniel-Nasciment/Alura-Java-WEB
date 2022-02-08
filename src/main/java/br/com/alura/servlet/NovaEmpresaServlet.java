@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.modelo.Banco;
 import br.com.alura.modelo.Empresa;
@@ -21,6 +22,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
+		
 		String nome = request.getParameter("nome");
 		String data = request.getParameter("data");
 

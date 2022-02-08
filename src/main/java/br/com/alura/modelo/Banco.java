@@ -9,6 +9,8 @@ public class Banco {
 	// SÃO CARREGADOS
 	private static List<Empresa> lista = new ArrayList<>();
 
+	private static Usuario u1 = new Usuario();
+
 	static {
 
 		Empresa emp1 = new Empresa();
@@ -20,6 +22,9 @@ public class Banco {
 		lista.add(emp1);
 		lista.add(emp2);
 
+		u1.setLogin("daniel");
+		u1.setSenha("1234");
+
 	}
 
 	public void adiciona(Empresa empresa) {
@@ -30,6 +35,14 @@ public class Banco {
 
 	public List<Empresa> listaEmpresas() {
 		return Banco.lista;
+	}
+
+	public Usuario buscaUsuario(String login, String senha) {
+
+		if (u1.getLogin().equals(login) && u1.getSenha().equals(senha)) {
+			return u1;
+		}
+		return null;
 	}
 
 }
