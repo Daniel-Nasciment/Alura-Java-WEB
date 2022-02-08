@@ -5,6 +5,7 @@
 <!-- ESSE IMPORT É PARA USAR O FOREACH E OUTRAS TAGS DESSA BIBLIOTECA -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:url value="/logout" var="urlContext"/>
 
 
 <!DOCTYPE html>
@@ -16,6 +17,10 @@
 <body>
 	
 	<h1>Usuário: ${usuarioLogado.login}</h1>
+	
+	<br>
+	
+	<a href="${urlContext}">Sair</a>
 	
 	<br>
 	
