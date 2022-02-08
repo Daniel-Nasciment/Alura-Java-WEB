@@ -1,3 +1,6 @@
+import org.apache.http.client.fluent.Request;
+
+
 public static void main(String[] args) throws Exception {
 
 		String resultado = Request.Post("http://localhost:8080/gerenciador/servlet")
