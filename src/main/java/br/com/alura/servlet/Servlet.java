@@ -16,8 +16,8 @@ import br.com.alura.modelo.Banco;
 import br.com.alura.modelo.Empresa;
 
 
-@WebServlet("/xml")
-public class XmlServlet extends HttpServlet {
+@WebServlet("/servlet")
+public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -26,14 +26,26 @@ public class XmlServlet extends HttpServlet {
 	
 		List<Empresa> listaEmpresas = new Banco().listaEmpresas();
 	
-		XStream xStream = new XStream();
-		// ESSE CARA AO EM VEZ DE DEVEOLVER O NOME DO PACOTE, TRAZ O NOME QUE EU DEFINIR
-		xStream.alias("empresa", Empresa.class);
-		String xml = xStream.toXML(listaEmpresas);
 		
-		response.setContentType("application/xml");
-		// DEVOLVE PARA O CHAMADOR
-		response.getWriter().print(xml);;
+		String header = request.getHeader("accept");
+		
+		
+		
+		if(header.endsWith("/json")) {
+			Gson gson = new Gson();
+			
+			String json = gson.toJson(listaEmpresas);
+			
+			response.setContentType("application/json");
+			response.getWriter().print(json);
+		}else {
+			XStream xStream = new XStream();
+			xStream.alias("empresa", Empresa.class);
+			String xml = xStream.toXML(listaEmpresas);
+			
+			response.setContentType("application/xml");
+			response.getWriter().print(xml);
+		}
 		
 	
 	}
