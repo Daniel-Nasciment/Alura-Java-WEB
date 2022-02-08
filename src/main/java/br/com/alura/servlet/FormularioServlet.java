@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/formularioServlet")
 public class FormularioServlet extends HttpServlet {
@@ -15,6 +16,13 @@ public class FormularioServlet extends HttpServlet {
        
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("usuarioLogado") == null) {
+			response.sendRedirect("loginForm");
+			return;
+		}
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/view/formNovaEmpresa.jsp");
 		
