@@ -1,6 +1,7 @@
 
-<%@ page import = "java.util.List, br.com.alura.modelo.Empresa"  %>
+<%@ page import = "java.util.List, br.com.alura.modelo.Empresa, br.com.alura.modelo.Usuario "  %>
 <% List<Empresa> lista = (List<Empresa>)request.getAttribute("lista"); %>
+<% Usuario usuario = (Usuario) request.getAttribute("usuarioLogado"); %>
 <!-- ESSE IMPORT É PARA USAR O FOREACH E OUTRAS TAGS DESSA BIBLIOTECA -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -13,6 +14,10 @@
 <title>Java Standard Taglib</title>
 </head>
 <body>
+	
+	<h1>Usuário: ${usuarioLogado.login}</h1>
+	
+	<br>
 	
 	<ul>
 		

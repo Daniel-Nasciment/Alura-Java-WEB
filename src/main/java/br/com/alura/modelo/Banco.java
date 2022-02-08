@@ -37,12 +37,12 @@ public class Banco {
 		return Banco.lista;
 	}
 
-	public boolean buscaUsuario(String login, String senha) {
+	public Usuario buscaUsuario(String login, String senha) {
 
 		if (u1.getLogin().equals(login) && u1.getSenha().equals(senha)) {
-			return true;
+			return u1;
 		}
-		return false;
+		return null;
 	}
 
 }

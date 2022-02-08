@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.modelo.Banco;
+import br.com.alura.modelo.Usuario;
 
 
 @WebServlet("/login")
@@ -25,12 +27,16 @@ public class LoginServlet extends HttpServlet {
 		
 		Banco banco = new Banco();
 		
-		boolean buscaUsuario = banco.buscaUsuario(login, senha);
+		Usuario buscaUsuario = banco.buscaUsuario(login, senha);
 	
 		
-		if(buscaUsuario) {
+		if(buscaUsuario != null) {
 			
-			
+			// session é um objeto onde é armazenado as informações do usuário
+			// é um objeto que sobrevive mais de uma requisição, o JSESSIONID é passado a partir da primeira requisição
+			// eu consigo pegar esse JSESSIONID através da requisição
+			HttpSession session = request.getSession();
+			session.setAttribute("usuarioLogado", buscaUsuario);
 			response.sendRedirect("listaEmpresas");
 			
 		}
